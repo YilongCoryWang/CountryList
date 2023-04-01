@@ -8,15 +8,15 @@ const CountryDetails: React.FC<any> = (props) => {
   let country = !state ? props.country : state.country;
 
   return (
-    <div className='country-detail-container'>
-      <div className='image-container'>
+    <div className="country-detail-container">
+      <div className="image-container">
         <Image
           src={country.flags.png}
           alt={country.flags.alt}
           preview={false}
         />
         <h1>{country.name.official}</h1>
-        <div className='text-box'>
+        <div className="text-box">
           <h5>Area: {country.area}</h5>
           <h5>
             Capital:{" "}
@@ -28,6 +28,16 @@ const CountryDetails: React.FC<any> = (props) => {
           <h5>Population: {country.population}</h5>
         </div>
       </div>
+      <Button
+        className="btn"
+        onClick={() => {
+          navigate(`/country/${country.cca2}/map`, {
+            state: { country: country.name.common },
+          });
+        }}
+      >
+        Show on the Map
+      </Button>
       <Button className="btn" onClick={() => navigate("/")}>
         Back
       </Button>
