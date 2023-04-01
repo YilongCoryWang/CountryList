@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import SearchBox from "SearchBox";
+import SearchBox from "../../components/SearchBox";
 
 describe("SearchBox", () => {
   const setups = (testData: string = "USA") => {
