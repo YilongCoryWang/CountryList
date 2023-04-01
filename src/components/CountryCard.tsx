@@ -26,9 +26,17 @@ const CountryCard: React.FC<any> = ({ country }) => {
     <div className="card-container">
       <Row>
         <Col xs={10} sm={10} md={10} lg={10} xl={10}>
-          <div>{country.cca2}</div>
+          <div>
+            <Tooltip placement="top" title={country.cca2}>
+              Country Code
+            </Tooltip>
+          </div>
 
-          <div>{country.name?.official}</div>
+          <div>
+            <Tooltip placement="top" title={country.name?.official}>
+              Country Name
+            </Tooltip>
+          </div>
 
           <div>
             <Tooltip
