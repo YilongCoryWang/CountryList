@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CountryDetails from "CountryDetails";
+import CountryDetails from "../../pages/CountryDetails";
 import { barbados } from "../__components__/Barbados";
 
 describe("CountryDetails", () => {

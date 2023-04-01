@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CountryCard from "CountryCard";
+import CountryCard from "../../components/CountryCard";
 import { barbados } from "./Barbados";
 
 describe("CountryCard", () => {
