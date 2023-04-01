@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
 import { Button, Col, Row } from "antd";
 import { RootState } from "../store/index";
 import store from "../store/index";
 import { updateCountrySearch } from "../store/countrySearch.slice";
 import useGetCountries from "../hooks/useGetCountries";
-import CountryCard from "./CountryCard";
 import Loading from "./share/Loading";
+import CountryCard from "../components/CountryCard";
 
 const CountryList: React.FC = () => {
   const { data: countries, isLoading } = useGetCountries();
@@ -45,7 +45,7 @@ const CountryList: React.FC = () => {
           style={{ display: "block" }}
           onClick={() => store.dispatch(updateCountrySearch(""))}
         >
-          View Full List
+          Back to Full List
         </Button>
       )}
     </>
