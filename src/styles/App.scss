@@ -1,7 +1,7 @@
-@import './pages/CountryMap.scss';
-@import './pages/CountryDetails.scss';
-@import './components/CountryCard.scss';
-@import './components/SearchBox.scss';
+@import "./pages/CountryMap.scss";
+@import "./pages/CountryDetails.scss";
+@import "./components/CountryCard.scss";
+@import "./components/SearchBox.scss";
 
 $width-button: 160px;
 
@@ -10,6 +10,10 @@ $width-button: 160px;
   margin: 0 auto;
   margin-top: 15px;
   width: $width-button;
+}
+
+.center {
+  text-align: center;
 }
 
 .loading-container {
