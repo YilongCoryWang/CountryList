@@ -10,7 +10,7 @@ const CountryMap: React.FC = () => {
   const Map = React.lazy(() => import("../components/Map"));
 
   return (
-    <div className="map-container">
+    <div className="center">
       <h1>{country}</h1>
       <Suspense>
         <Map />

@@ -1,23 +1,19 @@
 import React from "react";
-import { Button, Col, Row, Spin } from "antd";
-import useGetCountries from "../hooks/useGetCountries";
-import CountryCard from "./CountryCard";
 import { useSelector } from "react-redux";
+import { Button, Col, Row } from "antd";
 import { RootState } from "../store/index";
 import store from "../store/index";
 import { updateCountrySearch } from "../store/countrySearch.slice";
+import useGetCountries from "../hooks/useGetCountries";
+import CountryCard from "./CountryCard";
+import Loading from "./share/Loading";
 
 const CountryList: React.FC = () => {
   const { data: countries, isLoading } = useGetCountries();
   const { countrySearch } = useSelector((state: RootState) => state.country);
 
   if (isLoading) {
-    return (
-      <div className="loading-container">
-        <Spin size="large" />
-        <div className="loading-container">Loading...</div>
-      </div>
-    );
+    return <Loading />;
   }
 
   let filteredCountries = countries;
@@ -26,9 +22,7 @@ const CountryList: React.FC = () => {
       ({ name: { common, official }, cca2, cca3 }: any) => {
         return (
           common.toUpperCase().includes(countrySearch.toUpperCase()) ||
-          official
-            .toUpperCase()
-            .includes(countrySearch.toUpperCase()) ||
+          official.toUpperCase().includes(countrySearch.toUpperCase()) ||
           cca2.toUpperCase().includes(countrySearch.toUpperCase()) ||
           cca3.toUpperCase().includes(countrySearch.toUpperCase())
         );

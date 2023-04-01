@@ -5,7 +5,7 @@ import { ISearchBoxProps } from "../ts/interfaces";
 
 const SearchBox: React.FC<ISearchBoxProps> = ({handleSearch}) => {
   return (
-    <div className='searchbox-container'>
+    <div className='center searchbox-container'>
       <Input
         className='input'
         onPressEnter={handleSearch}

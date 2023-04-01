@@ -9,7 +9,7 @@ const CountryDetails: React.FC<any> = (props) => {
 
   return (
     <div className="country-detail-container">
-      <div className="image-container">
+      <div className="center image-container">
         <Image
           src={country.flags.png}
           alt={country.flags.alt}
