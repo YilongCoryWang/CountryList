@@ -8,7 +8,7 @@ const SearchBox: React.FC<ISearchBoxProps> = ({handleSearch}) => {
     <div className='center searchbox-container'>
       <Input
         className='input'
-        onPressEnter={handleSearch}
+        onPressEnter={handleSearch as ()=>void}
         placeholder="Filter Countries by Name"
         prefix={<SearchOutlined className="site-form-item-icon" />}
       />

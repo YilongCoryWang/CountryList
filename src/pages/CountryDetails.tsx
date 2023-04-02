@@ -1,12 +1,30 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { Button, Image } from "antd";
 import BackBtn from "../components/share/BackBtn";
+import ErrorMessage from "../components/share/ErrorMessage";
+import getCountryByName from "../helpers/getCountryByName";
+import { RootState } from "../store";
+import { useSelector } from "react-redux";
 
 const CountryDetails: React.FC<any> = (props) => {
+  const {
+    countryAll,
+  } = useSelector((state: RootState) => state.country);
+  // const { countryAll } = useSelector((state: RootState) => state.country);
   const navigate = useNavigate();
   const { state } = useLocation();
-  let country = !state ? props.country : state.country;
+  const { id } = useParams();
+  let country = !!state ? state.country : props.country;
+
+  if (!country) {
+    const rst = getCountryByName(countryAll, id!);
+    if (!rst[0]) {
+      return <ErrorMessage error={"Opps, cannot find the content."} />;
+    } else {
+      country = rst[0];
+    }
+  }
 
   return (
     <div className="country-detail-container">
@@ -34,7 +52,7 @@ const CountryDetails: React.FC<any> = (props) => {
         className="btn"
         onClick={() => {
           navigate(`/country/${country.cca2}/map`, {
-            state: { country: country.name.common },
+            state: { country: country },
           });
         }}
       >

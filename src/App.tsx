@@ -7,14 +7,14 @@ import "./styles/App.scss";
 
 function App() {
   const CountryDetails = React.lazy(() => import("./pages/CountryDetails"));
-  const CountryMap = React.lazy(() => import("./pages/CountryMap"));
+  const MapContainer = React.lazy(() => import("./pages/MapContainer"));
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/country/:id"
+          path="country/:id"
           element={
             <Suspense fallback={<Loading />}>
               <CountryDetails />
@@ -22,10 +22,10 @@ function App() {
           }
         />
         <Route
-          path="/country/:id/map"
+          path="country/:name/map"
           element={
             <Suspense fallback={<Loading />}>
-              <CountryMap />
+              <MapContainer />
             </Suspense>
           }
         />

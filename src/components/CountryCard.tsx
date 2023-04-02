@@ -18,7 +18,7 @@ const CountryCard: React.FC<any> = ({ country }) => {
       return "";
     }
     return suffixes.reduce((acc: string, suffix: string, index: number) => {
-      return (index === 0) ? acc + suffix : acc + " / " + root + suffix;
+      return index === 0 ? acc + suffix : acc + " / " + root + suffix;
     }, root);
   };
 

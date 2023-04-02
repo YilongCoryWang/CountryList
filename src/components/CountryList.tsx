@@ -1,54 +1,39 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Button, Col, Row } from "antd";
-import { RootState } from "../store/index";
-import store from "../store/index";
-import { updateCountrySearch } from "../store/countrySearch.slice";
-import useGetCountries from "../hooks/useGetCountries";
-import Loading from "./share/Loading";
+import store, { RootState } from "../store/index";
 import CountryCard from "../components/CountryCard";
-import ErrorMessage from "./share/ErrorMessage"
+import { doCountrySearch } from "../store/country.slice";
+import ErrorMessage from "./share/ErrorMessage";
+import { ICountry } from "../ts/interfaces";
 
 const CountryList: React.FC = () => {
-  const { data: countries, isLoading, isError, error } = useGetCountries();
-  const { countrySearch } = useSelector((state: RootState) => state.country);
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (isError) {
-    return <ErrorMessage error={`Opps, countries could not be retrieved: ${error.message}`} />;
-  }
-
-  let filteredCountries = countries;
-  if (countrySearch !== "") {
-    filteredCountries = countries.filter(
-      ({ name: { common, official }, cca2, cca3 }: any) => {
-        return (
-          common.toUpperCase().includes(countrySearch.toUpperCase()) ||
-          official.toUpperCase().includes(countrySearch.toUpperCase()) ||
-          cca2.toUpperCase().includes(countrySearch.toUpperCase()) ||
-          cca3.toUpperCase().includes(countrySearch.toUpperCase())
-        );
-      }
-    );
-  }
+  const {
+    filter: { keyword, countryFiltered },
+  } = useSelector((state: RootState) => state.country);
 
   return (
     <>
       <Row>
-        {filteredCountries.map((country: any) => (
+        {countryFiltered.map((country: ICountry) => (
           <Col xs={24} sm={12} md={8} lg={6} key={country.cca2}>
             <CountryCard key={country.cca2} country={country}></CountryCard>
           </Col>
         ))}
       </Row>
-      {countrySearch !== "" && (
+
+      {keyword !== "" && countryFiltered.length === 0 && (
+        <ErrorMessage
+          error={`Opps, cannot find the county with keyword: "${keyword}"`}
+          isShowBackBtn={false}
+        />
+      )}
+
+      {keyword !== "" && countryFiltered.length !== 0 && (
         <Button
           className="btn"
           style={{ display: "block" }}
-          onClick={() => store.dispatch(updateCountrySearch(""))}
+          onClick={() => store.dispatch(doCountrySearch(""))}
         >
           Back to Full List
         </Button>
