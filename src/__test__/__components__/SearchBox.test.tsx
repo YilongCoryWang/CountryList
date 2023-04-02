@@ -4,7 +4,7 @@ import SearchBox from "../../components/SearchBox";
 describe("SearchBox", () => {
   const setups = (testData: string = "USA") => {
     const mockSearch = jest.fn();
-    const { getByText, getByPlaceholderText, ...utils } = render(<SearchBox handleSearch={mockSearch}/>);
+    const { ...utils } = render(<SearchBox handleSearch={mockSearch}/>);
     const input: HTMLInputElement = screen.getByPlaceholderText(
       "Filter Countries by Name"
     );

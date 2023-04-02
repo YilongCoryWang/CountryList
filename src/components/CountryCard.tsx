@@ -63,6 +63,7 @@ const CountryCard: React.FC<any> = ({ country }) => {
           <div className="image-vertical-container">
             <div className="image-vertical-inner">
               <Image
+                data-testid="country-card-national-flag"
                 height="80px"
                 width="100px"
                 src={country.flags.png}

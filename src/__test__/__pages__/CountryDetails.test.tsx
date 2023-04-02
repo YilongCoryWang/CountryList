@@ -1,11 +1,23 @@
 import { render, screen } from "@testing-library/react";
 import CountryDetails from "../../pages/CountryDetails";
 import { barbados } from "../__components__/Barbados";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../../store"
 
 describe("CountryDetails", () => {
   const setups = () => {
-    const { getByText, ...utils } = render(
-      <CountryDetails country={barbados} />
+    const { ...utils } = render(
+      <Provider store={store}>
+      <MemoryRouter initialEntries={[`/country/${barbados.cca2}`]}>
+        <Routes>
+          <Route
+            path="country/:id"
+            element={<CountryDetails country={barbados} />}
+          />
+        </Routes>
+      </MemoryRouter>
+      </Provider>
     );
     const official = screen.getByText("Barbados");
     const area = screen.getByText("Area: 430");
