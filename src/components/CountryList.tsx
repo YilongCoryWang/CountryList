@@ -7,13 +7,18 @@ import { updateCountrySearch } from "../store/countrySearch.slice";
 import useGetCountries from "../hooks/useGetCountries";
 import Loading from "./share/Loading";
 import CountryCard from "../components/CountryCard";
+import ErrorMessage from "./share/ErrorMessage"
 
 const CountryList: React.FC = () => {
-  const { data: countries, isLoading } = useGetCountries();
+  const { data: countries, isLoading, isError, error } = useGetCountries();
   const { countrySearch } = useSelector((state: RootState) => state.country);
 
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (isError) {
+    return <ErrorMessage error={`Opps, countries could not be retrieved: ${error.message}`} />;
   }
 
   let filteredCountries = countries;
