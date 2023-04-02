@@ -26,19 +26,19 @@ const CountryCard: React.FC<any> = ({ country }) => {
     <div className="card-container">
       <Row>
         <Col xs={10} sm={10} md={10} lg={10} xl={10}>
-          <div>
+          <div className="tool-tip">
             <Tooltip placement="top" title={country.cca2}>
               Country Code
             </Tooltip>
           </div>
 
-          <div>
+          <div className="tool-tip">
             <Tooltip placement="top" title={country.name?.official}>
               Country Name
             </Tooltip>
           </div>
 
-          <div>
+          <div className="tool-tip">
             <Tooltip
               placement="top"
               title={country.timezones && getTimezones(country.timezones)}
@@ -47,7 +47,7 @@ const CountryCard: React.FC<any> = ({ country }) => {
             </Tooltip>
           </div>
 
-          <div>
+          <div className="tool-tip">
             <Tooltip
               placement="top"
               title={
