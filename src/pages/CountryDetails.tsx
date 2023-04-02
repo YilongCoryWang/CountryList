@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Image } from "antd";
+import BackBtn from "../components/share/BackBtn";
 
 const CountryDetails: React.FC<any> = (props) => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const CountryDetails: React.FC<any> = (props) => {
           <h5>Population: {country.population}</h5>
         </div>
       </div>
+
       <Button
         className="btn"
         onClick={() => {
@@ -38,9 +40,8 @@ const CountryDetails: React.FC<any> = (props) => {
       >
         Show on the Map
       </Button>
-      <Button className="btn" onClick={() => navigate("/")}>
-        Back
-      </Button>
+
+      <BackBtn />
     </div>
   );
 };

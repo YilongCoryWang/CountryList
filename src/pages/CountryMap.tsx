@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button } from "antd";
 import Map from "../components/Map";
+import BackBtn from "../components/share/BackBtn";
 
 const CountryMap: React.FC = () => {
   const navigate = useNavigate();
@@ -13,9 +13,7 @@ const CountryMap: React.FC = () => {
     <div className="center">
       <h1>{country}</h1>
       <Map />
-      <Button className="btn" onClick={() => navigate(-1)}>
-        Back
-      </Button>
+      <BackBtn />
     </div>
   );
 };
