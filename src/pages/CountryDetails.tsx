@@ -11,7 +11,6 @@ const CountryDetails: React.FC<any> = (props) => {
   const {
     countryAll,
   } = useSelector((state: RootState) => state.country);
-  // const { countryAll } = useSelector((state: RootState) => state.country);
   const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = useParams();
