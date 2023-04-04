@@ -38,7 +38,7 @@ const Home: React.FC = () => {
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    store.dispatch(doCountrySearch(e.target!.value.trim()));
+    store.dispatch(doCountrySearch(e.target!.value));
     e.target!.value = "";
   };
 
