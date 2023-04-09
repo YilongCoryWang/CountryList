@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store, { persister } from "./store";
 import App from "./App";
 import { PersistGate } from "redux-persist/integration/react";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,3 +31,5 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+serviceWorkerRegistration.register();
