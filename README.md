@@ -7,6 +7,8 @@ This project shows country list with react.
 1. Minimal screen width: 375px (iphone SE)
 2. Maximal screen width: 1920px
 3. Clients use the latest browsers (Chrome, Edge)
+4. Google MAP API key is not exposed
+5. Client screen width is fixed when viewing map page
 
 ## How to run
 
