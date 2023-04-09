@@ -4,6 +4,7 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 const containerStyle = {
   width: window.innerWidth * .9,
   height: window.innerWidth * .9,
+  maxHeight: '800px',
   margin: '0 auto'
 };
 
