@@ -10,11 +10,13 @@
     position: relative;
     top: -3px;
     left: +3px;
+    box-shadow: 10px 5px 5px grey;
   }
 
   .tool-tip:hover{
     font-size: large;
     font-weight: bold;
+    text-shadow: black 1px 0 10px;
   }
 
   .image-vertical-container {
@@ -22,11 +24,31 @@
     position: relative;
     padding: 1px auto 1px;
 
+    &:hover{
+      animation: shadow 2s infinite;
+      transform-origin: left top;
+    }
+
     .image-vertical-inner {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       border: 1px solid black;
+    }
+
+    @keyframes shadow {
+      0% {
+        filter: drop-shadow(2px 3px 7px rgba(0, 0, 0, .7));
+        transform: scale(1.2) rotateX(0deg);
+      }
+      50% {
+        filter: drop-shadow(3px 3px 16px rgba(0, 0, 0, .5));
+        transform: scale(1.2) rotateX(10deg);
+      }
+      100% {
+        filter: drop-shadow(2px 3px 7px rgba(0, 0, 0, .7));
+        transform: scale(1.2) rotateX(0deg);
+      }
     }
   }
 
