@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { IMapProps } from "../ts/interfaces";
 
 const containerStyle = {
   width: window.innerWidth * .9,
@@ -7,10 +8,6 @@ const containerStyle = {
   maxHeight: '80vh',
   margin: '0 auto'
 };
-
-interface IMapProps {
-  countryName: string
-}
 
 const Map:React.FC<IMapProps> = ({countryName}) => {
   const { isLoaded } = useJsApiLoader({

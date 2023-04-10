@@ -29,3 +29,7 @@ export interface ISearchBoxProps {
 export interface IBackBtnProps {
   handleClick?: () => void;
 }
+
+export interface IMapProps {
+  countryName: string
+}
