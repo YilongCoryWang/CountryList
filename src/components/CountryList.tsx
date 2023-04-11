@@ -23,10 +23,19 @@ const CountryList: React.FC = () => {
       </Row>
 
       {keyword !== "" && countryFiltered.length === 0 && (
-        <ErrorMessage
-          error={`Opps, cannot find the county with keyword: "${keyword}"`}
-          isShowBackBtn={false}
-        />
+        <>
+          <ErrorMessage
+            error={`Opps, cannot find the county with keyword: "${keyword}"`}
+            isShowBackBtn={false}
+          />
+          <Button
+            className="btn"
+            style={{ display: "block" }}
+            onClick={() => store.dispatch(doCountrySearch(""))}
+          >
+            Back to Full List
+          </Button>
+        </>
       )}
 
       {keyword !== "" && countryFiltered.length !== 0 && (

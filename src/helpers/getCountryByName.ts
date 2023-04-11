@@ -2,12 +2,13 @@ import { ICountry } from "../ts/interfaces";
 
 const getCountryByName = (countryList: ICountry[], searchKeyword: string) => {
   const countryName = searchKeyword.replace(/\s/g, "").trim()
-  if (countryList.length === 0 || !countryName || !/^[a-zA-Z]{2,50}$/.test(countryName)) {
-    return [];
-  }
 
   if (countryName === "") {
     return countryList;
+  }
+
+  if (countryList.length === 0 || !/^[a-zA-Z]{2,50}$/.test(countryName)) {
+    return [];
   }
 
   return countryList.filter(
